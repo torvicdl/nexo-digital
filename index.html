@@ -3,28 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexo Digital - Inicio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Nexo Digital - Robot Autónomo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Barra de Navegación -->
     <header>
-        <div class="logo">Nexo Digital</div>
-        <nav>
-            <a href="index.html" class="active">Inicio</a>
-            <a href="mision-vision.html">Filosofía y Equipo</a>
-            <a href="proyecto.html">El Proyecto</a>
-            <a href="contacto.html">Contacto</a>
+        <nav class="navbar">
+            <h1 class="logo">Nexo Digital</h1>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#componentes">Componentes</a></li>
+                <li><a href="#descargas">Descargas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </nav>
     </header>
 
-    <div class="contenido">
-        <h1>Vehículo Autónomo Evasor de Obstáculos</h1>
-        <p>Un paso hacia el futuro de la movilidad segura. Nuestro proyecto utiliza robótica y programación en Arduino para detectar objetos en el camino y cambiar de ruta automáticamente, evitando colisiones en tiempo real.</p>
-        <p>Diseñamos este prototipo para demostrar cómo la tecnología de sensores puede aplicarse de manera práctica para prevenir accidentes, automatizar el transporte y crear entornos más seguros.</p>
-    </div>
+    <!-- Sección Hero (Encabezado) -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Bienvenidos a Nexo Digital</h2>
+            <p>Conoce a nuestro robot autónomo capaz de esquivar obstáculos en tiempo real usando tecnología Arduino.</p>
+        </div>
+    </section>
+
+    <!-- Sección de Tarjetas (Componentes) -->
+    <section id="componentes" class="section-container">
+        <h2 class="section-title">Componentes Principales</h2>
+        <div class="cards-grid">
+            
+            <div class="card">
+                <div class="card-img arduino-img"></div>
+                <h3>Placa Microcontroladora</h3>
+                <p>El "cerebro" del robot. Procesa los datos de los sensores y da las órdenes a los motores.</p>
+                <button class="btn">Ver Diagrama</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img sensor-img"></div>
+                <h3>Sensor Ultrasónico HC-SR04</h3>
+                <p>Nuestros "ojos". Emite ondas de sonido para detectar a qué distancia están los obstáculos.</p>
+                <button class="btn">Especificaciones</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img motor-img"></div>
+                <h3>Chasis y Motores DC</h3>
+                <p>La base móvil que permite al robot girar y avanzar para evadir los muros.</p>
+                <button class="btn">Ver Ensamblaje</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección de Descargas (Reemplazo del carrito) -->
+    <section id="descargas" class="section-container bg-light">
+        <h2 class="section-title">Centro de Descargas</h2>
+        <table class="downloads-table">
+            <tr>
+                <th>Archivo</th>
+                <th>Descripción</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <td>Código Fuente (.ino)</td>
+                <td>Script principal para cargar en el Arduino.</td>
+                <td><button class="btn-small">Descargar</button></td>
+            </tr>
+            <tr>
+                <td>Presentación (.pdf)</td>
+                <td>Diapositivas oficiales para la feria de ciencias.</td>
+                <td><button class="btn-small">Descargar</button></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Sección Contacto y Nosotros -->
+    <section id="contacto" class="section-container">
+        <div class="split-section">
+            <div class="about-us">
+                <h2>Misión y Visión</h2>
+                <p><strong>Misión:</strong> Facilitar el aprendizaje de la robótica mediante la creación de un robot accesible y funcional.</p>
+                <p><strong>Visión:</strong> Inspirar a más estudiantes a interesarse en la programación, la electrónica y el desarrollo web.</p>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Déjanos tus sugerencias</h2>
+                <form action="#">
+                    <input type="text" placeholder="Tu Nombre" required>
+                    <input type="email" placeholder="Tu Correo" required>
+                    <textarea rows="4" placeholder="Escribe tus dudas sobre el código o sugerencias..." required></textarea>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Nexo Digital - Feria Científica</p>
+        <p>&copy; 2026 Nexo Digital. Proyecto de Robótica.</p>
     </footer>
+
 </body>
 </html>
