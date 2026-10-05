@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexo Digital - Robot Autónomo</title>
+    <title>Nexo Digital - Auto Esquivador de Objetos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,98 +11,143 @@
     <!-- Barra de Navegación -->
     <header>
         <nav class="navbar">
-            <h1 class="logo">Nexo Digital</h1>
+            <h1 class="logo">Nexo Digital 🤖</h1>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#componentes">Componentes</a></li>
-                <li><a href="#descargas">Descargas</a></li>
+                <li><a href="#funcionamiento">Funcionamiento</a></li>
+                <li><a href="#componentes">Materiales</a></li>
+                <li><a href="#equipo">Equipo</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Sección Hero (Encabezado) -->
+    <!-- Sección Hero -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h2>Bienvenidos a Nexo Digital</h2>
-            <p>Conoce a nuestro robot autónomo capaz de esquivar obstáculos en tiempo real usando tecnología Arduino.</p>
+            <h2>Auto Esquivador de Objetos</h2>
+            <p>Prototipo robótico autónomo diseñado con Arduino Uno para detección de obstáculos y navegación segura en tiempo real.</p>
+            
+            <!-- Datos técnicos rápidos -->
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                <span style="background: #00e676; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">C++ / Arduino IDE</span>
+                <span style="background: #00e676; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Sensor Ultrasónico HC-SR04</span>
+                <span style="background: #00e676; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Alimentación Li-Ion 7.4V</span>
+            </div>
         </div>
     </section>
 
-    <!-- Sección de Tarjetas (Componentes) -->
-    <section id="componentes" class="section-container">
-        <h2 class="section-title">Componentes Principales</h2>
+    <!-- Explicación de Funcionamiento -->
+    <section id="funcionamiento" class="section-container">
+        <h2 class="section-title">¿Cómo Funciona el Sistema?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: center;">
+            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h3 style="color: #00b35c; margin-bottom: 10px;">1. Emisión Ultrasónica</h3>
+                <p>El sensor HC-SR04 emite ráfagas de ultrasonido imperceptibles para el oído humano a través del pin Trigger.</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h3 style="color: #00b35c; margin-bottom: 10px;">2. Cálculo de Distancia</h3>
+                <p>El sonido rebota en los objetos y regresa al pin Echo. La placa Arduino calcula la distancia exacta en centímetros.</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h3 style="color: #00b35c; margin-bottom: 10px;">3. Toma de Decisión</h3>
+                <p>Si la distancia es menor a 20 cm, el puente H L298N invierte la marcha de los motores para esquivar el objeto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Componentes (8 materiales) -->
+    <section id="componentes" class="section-container bg-light">
+        <h2 class="section-title">Componentes del Prototipo</h2>
         <div class="cards-grid">
             
             <div class="card">
-                <div class="card-img arduino-img"></div>
-                <h3>Placa Microcontroladora</h3>
-                <p>El "cerebro" del robot. Procesa los datos de los sensores y da las órdenes a los motores.</p>
-                <button class="btn">Ver Diagrama</button>
+                <img src="arduino.jpg" alt="Placa Arduino Uno" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
+                <h3>Placa Arduino Uno</h3>
+                <p>Procesador principal encargado de leer los sensores y enviar las instrucciones a los motores.</p>
             </div>
 
             <div class="card">
-                <div class="card-img sensor-img"></div>
+                <img src="chasis.jpg" alt="Chasis Inteligente" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
+                <h3>Chasis de 2 Motores</h3>
+                <p>Estructura acrílica con switch ON/OFF integrado y llantas de goma de alta adherencia.</p>
+            </div>
+
+            <div class="card">
+                <img src="l298n.jpg" alt="Módulo L298N" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
+                <h3>Módulo Puente H (HL298N)</h3>
+                <p>Controlador de potencia de doble canal para regular velocidad y sentido de giro.</p>
+            </div>
+
+            <div class="card">
+                <img src="sensor.jpg" alt="Sensor HC-SR04" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
                 <h3>Sensor Ultrasónico HC-SR04</h3>
-                <p>Nuestros "ojos". Emite ondas de sonido para detectar a qué distancia están los obstáculos.</p>
-                <button class="btn">Especificaciones</button>
+                <p>Mide rangos de detección entre 2 cm y 400 cm con una precisión milimétrica.</p>
             </div>
 
             <div class="card">
-                <div class="card-img motor-img"></div>
-                <h3>Chasis y Motores DC</h3>
-                <p>La base móvil que permite al robot girar y avanzar para evadir los muros.</p>
-                <button class="btn">Ver Ensamblaje</button>
+                <img src="cables-mm.jpg" alt="Cables Macho-Macho" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
+                <h3>Cables Macho-Macho</h3>
+                <p>Conductores de cobre flexible para puentes directos en el protoboard y componentes.</p>
+            </div>
+
+            <div class="card">
+                <img src="cables-mh.jpg" alt="Cables Macho-Hembra" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
+                <h3>Cables Macho-Hembra</h3>
+                <p>Conexiones seguras para vincular los pines del sensor y del controlador a la placa.</p>
+            </div>
+
+            <div class="card">
+                <img src="baterias.jpg" alt="Baterías 18650" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
+                <h3>2 Baterías Li-Ion 18650</h3>
+                <p>Celdas recargables mediante USB que garantizan flujo eléctrico estable para los motores.</p>
+            </div>
+
+            <div class="card">
+                <img src="portapilas.jpg" alt="Porta Pilas" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
+                <h3>Porta Pilas Doble</h3>
+                <p>Soporte seguro en serie que provee el voltaje total de alimentación (7.4V nominales).</p>
             </div>
 
         </div>
     </section>
 
-    <!-- Sección de Descargas (Reemplazo del carrito) -->
-    <section id="descargas" class="section-container bg-light">
-        <h2 class="section-title">Centro de Descargas</h2>
-        <table class="downloads-table">
-            <tr>
-                <th>Archivo</th>
-                <th>Descripción</th>
-                <th>Acción</th>
-            </tr>
-            <tr>
-                <td>Código Fuente (.ino)</td>
-                <td>Script principal para cargar en el Arduino.</td>
-                <td><button class="btn-small">Descargar</button></td>
-            </tr>
-            <tr>
-                <td>Presentación (.pdf)</td>
-                <td>Diapositivas oficiales para la feria de ciencias.</td>
-                <td><button class="btn-small">Descargar</button></td>
-            </tr>
-        </table>
+    <!-- Sección Equipo -->
+    <section id="equipo" class="section-container">
+        <h2 class="section-title">Equipo Desarrollador</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: #666;">Estudiantes a cargo del diseño, ensamblaje y programación del prototipo:</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Víctor Manuel</div>
+            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Melanie Velázquez</div>
+            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Nicté González</div>
+            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">André Jacinto</div>
+            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Mía Bercián</div>
+        </div>
     </section>
 
-    <!-- Sección Contacto y Nosotros -->
-    <section id="contacto" class="section-container">
+    <!-- Sección Contacto -->
+    <section id="contacto" class="section-container bg-light">
         <div class="split-section">
             <div class="about-us">
-                <h2>Misión y Visión</h2>
-                <p><strong>Misión:</strong> Facilitar el aprendizaje de la robótica mediante la creación de un robot accesible y funcional.</p>
-                <p><strong>Visión:</strong> Inspirar a más estudiantes a interesarse en la programación, la electrónica y el desarrollo web.</p>
+                <h2>Misión & Visión</h2>
+                <p><strong>Misión:</strong> Aplicar conocimientos de electrónica y programación para construir un robot funcional que demuestre el potencial de la tecnología autónoma en la prevención de accidentes.</p>
+                <p><strong>Visión:</strong> Inspirar a nuestra comunidad escolar a involucrarse en proyectos de ciencia, ingeniería y robótica de manera práctica.</p>
             </div>
             
             <div class="contact-form">
-                <h2>Déjanos tus sugerencias</h2>
+                <h2>¿Dudas para el equipo?</h2>
                 <form action="#">
                     <input type="text" placeholder="Tu Nombre" required>
-                    <input type="email" placeholder="Tu Correo" required>
-                    <textarea rows="4" placeholder="Escribe tus dudas sobre el código o sugerencias..." required></textarea>
-                    <button type="submit" class="btn">Enviar Mensaje</button>
+                    <input type="email" placeholder="Tu Correo Electronico" required>
+                    <textarea rows="4" placeholder="Escribe tus dudas sobre el circuito o la programación..." required></textarea>
+                    <button type="submit" class="btn">Enviar Consulta</button>
                 </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Nexo Digital. Proyecto de Robótica.</p>
+        <p>&copy; 2026 Nexo Digital | Proyecto Feria de Ciencias - Auto Esquivador de Objetos</p>
     </footer>
 
 </body>
