@@ -3,151 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexo Digital - Auto Esquivador de Objetos</title>
+    <title>Carro Esquivador de Obstáculos | Proyecto de Robótica</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Barra de Navegación -->
+    <!-- Encabezado / Menú -->
     <header>
         <nav class="navbar">
-            <h1 class="logo">Nexo Digital 🤖</h1>
+            <div class="brand">
+                <span class="logo-icon">🤖</span>
+                <span class="brand-text">Proyecto Robótica <small>por Nexo Digital</small></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#funcionamiento">Funcionamiento</a></li>
+                <li><a href="#como-funciona">¿Cómo Funciona?</a></li>
                 <li><a href="#componentes">Materiales</a></li>
-                <li><a href="#equipo">Equipo</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#codigo">Código fuente</a></li>
+                <li><a href="#equipo">Nosotros</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Sección Hero -->
+    <!-- Portada -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h2>Auto Esquivador de Objetos</h2>
-            <p>Prototipo robótico autónomo diseñado con Arduino Uno para detección de obstáculos y navegación segura en tiempo real.</p>
+            <span class="tagline">Feria de Ciencias 2026</span>
+            <h2>Carro Autónomo Esquivador de Obstáculos</h2>
+            <p>Diseñamos y ensamblamos un prototipo sobre ruedas capaz de detectar paredes y objetos en tiempo real sin chocar, usando lógica en Arduino y un sensor ultrasónico.</p>
             
-            <!-- Datos técnicos rápidos -->
-            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
-                <span style="background: #00e676; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">C++ / Arduino IDE</span>
-                <span style="background: #00e676; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Sensor Ultrasónico HC-SR04</span>
-                <span style="background: #00e676; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Alimentación Li-Ion 7.4V</span>
+            <div class="tech-pills">
+                <span class="pill">C++ / Arduino IDE</span>
+                <span class="pill">Sensor HC-SR04</span>
+                <span class="pill">Puente H L298N</span>
+                <span class="pill">Baterías 18650 (7.4V)</span>
             </div>
         </div>
     </section>
 
     <!-- Explicación de Funcionamiento -->
-    <section id="funcionamiento" class="section-container">
-        <h2 class="section-title">¿Cómo Funciona el Sistema?</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: center;">
-            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                <h3 style="color: #00b35c; margin-bottom: 10px;">1. Emisión Ultrasónica</h3>
-                <p>El sensor HC-SR04 emite ráfagas de ultrasonido imperceptibles para el oído humano a través del pin Trigger.</p>
+    <section id="como-funciona" class="section-container">
+        <h2 class="section-title">¿Cómo toma decisiones el robot?</h2>
+        <p class="section-intro">El circuito combina la lectura del espacio con la respuesta inmediata de los motores en cuatro pasos simples:</p>
+        
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h3>Emisión del pulso</h3>
+                <p>El sensor ultrasónico dispara un pulso de sonido imperceptible a través de su pin Trigger.</p>
             </div>
-            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                <h3 style="color: #00b35c; margin-bottom: 10px;">2. Cálculo de Distancia</h3>
-                <p>El sonido rebota en los objetos y regresa al pin Echo. La placa Arduino calcula la distancia exacta en centímetros.</p>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h3>Rebote y Eco</h3>
+                <p>La onda choca con el obstáculo más cercano y regresa al pin Echo del sensor.</p>
             </div>
-            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                <h3 style="color: #00b35c; margin-bottom: 10px;">3. Toma de Decisión</h3>
-                <p>Si la distancia es menor a 20 cm, el puente H L298N invierte la marcha de los motores para esquivar el objeto.</p>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h3>Cálculo en la placa</h3>
+                <p>El Arduino procesa cuánto tiempo tardó la onda en ir y regresar para calcular la distancia en centímetros.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <h3>Giro de emergencia</h3>
+                <p>Si el objeto está a menos de 20 cm, detiene una rueda y gira sobre su propio eje para cambiar de dirección.</p>
             </div>
         </div>
     </section>
 
-    <!-- Catálogo de Componentes (8 materiales) -->
-    <section id="componentes" class="section-container bg-light">
-        <h2 class="section-title">Componentes del Prototipo</h2>
+    <!-- Galería Completa de Materiales -->
+    <section id="componentes" class="section-container">
+        <h2 class="section-title">Componentes y Piezas Utilizadas</h2>
+        <p class="section-intro">Este es todo el material que ocupamos para el armado técnico y la alimentación de energía del prototipo:</p>
+        
         <div class="cards-grid">
             
             <div class="card">
-                <img src="arduino.jpg" alt="Placa Arduino Uno" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>Placa Arduino Uno</h3>
-                <p>Procesador principal encargado de leer los sensores y enviar las instrucciones a los motores.</p>
+                <img src="arduino.jpg" alt="Arduino Uno">
+                <div class="card-body">
+                    <h3>Placa Arduino Uno</h3>
+                    <p>Es la tarjeta principal que guarda la programación y coordina las órdenes entre las lecturas y las ruedas.</p>
+                </div>
             </div>
 
             <div class="card">
-                <img src="chasis.jpg" alt="Chasis Inteligente" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>Chasis de 2 Motores</h3>
-                <p>Estructura acrílica con switch ON/OFF integrado y llantas de goma de alta adherencia.</p>
+                <img src="chasis.jpg" alt="Chasis y motores">
+                <div class="card-body">
+                    <h3>Chasis y 2 Motores DC</h3>
+                    <p>Base acrílica que soporta todo el circuito, incluye interruptor de encendido y motores con llantas de goma.</p>
+                </div>
             </div>
 
             <div class="card">
-                <img src="l298n.jpg" alt="Módulo L298N" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>Módulo Puente H (HL298N)</h3>
-                <p>Controlador de potencia de doble canal para regular velocidad y sentido de giro.</p>
+                <img src="l298n.jpg" alt="Puente H L298N">
+                <div class="card-body">
+                    <h3>Controlador Puente H (L298N)</h3>
+                    <p>Etapa de potencia necesaria para cambiar el sentido de giro de los motores sin dañar la placa de control.</p>
+                </div>
             </div>
 
             <div class="card">
-                <img src="sensor.jpg" alt="Sensor HC-SR04" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>Sensor Ultrasónico HC-SR04</h3>
-                <p>Mide rangos de detección entre 2 cm y 400 cm con una precisión milimétrica.</p>
+                <img src="sensor.jpg" alt="Sensor Ultrasónico">
+                <div class="card-body">
+                    <h3>Sensor Ultrasónico HC-SR04</h3>
+                    <p>Funciona como los ojos del carrito, capaz de medir distancias de 2 cm hasta 4 metros.</p>
+                </div>
             </div>
 
             <div class="card">
-                <img src="cables-mm.jpg" alt="Cables Macho-Macho" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>Cables Macho-Macho</h3>
-                <p>Conductores de cobre flexible para puentes directos en el protoboard y componentes.</p>
+                <img src="cables-mm.jpg" alt="Cables Macho-Macho">
+                <div class="card-body">
+                    <h3>Cables Macho-Macho</h3>
+                    <p>Utilizados para llevar la corriente y señales entre los pines principales de la placa y la protoboard.</p>
+                </div>
             </div>
 
             <div class="card">
-                <img src="cables-mh.jpg" alt="Cables Macho-Hembra" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>Cables Macho-Hembra</h3>
-                <p>Conexiones seguras para vincular los pines del sensor y del controlador a la placa.</p>
+                <img src="cables-mh.jpg" alt="Cables Macho-Hembra">
+                <div class="card-body">
+                    <h3>Cables Macho-Hembra</h3>
+                    <p>Indispensables para conectar directamente las terminales del sensor de presencia y del puente H.</p>
+                </div>
             </div>
 
             <div class="card">
-                <img src="baterias.jpg" alt="Baterías 18650" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>2 Baterías Li-Ion 18650</h3>
-                <p>Celdas recargables mediante USB que garantizan flujo eléctrico estable para los motores.</p>
+                <img src="baterias.jpg" alt="Baterías Recargables">
+                <div class="card-body">
+                    <h3>2 Baterías Li-Ion 18650</h3>
+                    <p>Pilas recargables de litio que dan el flujo de energía constante y suficiente para alimentar los motores.</p>
+                </div>
             </div>
 
             <div class="card">
-                <img src="portapilas.jpg" alt="Porta Pilas" class="card-img" style="object-fit: cover; width: 100%; height: 150px; border-radius: 10px;">
-                <h3>Porta Pilas Doble</h3>
-                <p>Soporte seguro en serie que provee el voltaje total de alimentación (7.4V nominales).</p>
+                <img src="portapilas.jpg" alt="Porta pilas">
+                <div class="card-body">
+                    <h3>Porta Pilas Doble</h3>
+                    <p>Base donde montamos las dos baterías conectadas en serie para sumar aproximadamente 7.4V en total.</p>
+                </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Sección Equipo -->
+    <!-- Bloque de Código de Ejemplo -->
+    <section id="codigo" class="section-container">
+        <h2 class="section-title">Lógica del Algoritmo</h2>
+        <div class="code-box">
+            <div class="code-header">
+                <span>carro_esquivador.ino</span>
+                <span class="dot"></span>
+            </div>
+            <pre><code>// Definición de Pines del Sensor
+const int trigPin = 9;
+const int echoPin = 10;
+
+// Pines para el control de motores (Puente H)
+const int motorIzquierdo = 5;
+const int motorDerecho = 6;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(motorIzquierdo, OUTPUT);
+  pinMode(motorDerecho, OUTPUT);
+}
+
+void loop() {
+  long duracion;
+  int distancia;
+  
+  // Enviar pulso
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  duracion = pulseIn(echoPin, HIGH);
+  distancia = duracion * 0.034 / 2; // Convertir a cm
+  
+  // Regla de decisión
+  if (distancia < 20 && distancia > 0) {
+    // Obstáculo detectado: Esquivar
+    digitalWrite(motorIzquierdo, LOW);
+    digitalWrite(motorDerecho, HIGH);
+    delay(500);
+  } else {
+    // Camino libre: Avanzar
+    digitalWrite(motorIzquierdo, HIGH);
+    digitalWrite(motorDerecho, HIGH);
+  }
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- Integrantes -->
     <section id="equipo" class="section-container">
-        <h2 class="section-title">Equipo Desarrollador</h2>
-        <p style="text-align: center; margin-bottom: 20px; color: #666;">Estudiantes a cargo del diseño, ensamblaje y programación del prototipo:</p>
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Víctor Manuel</div>
-            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Melanie Velázquez</div>
-            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Nicté González</div>
-            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">André Jacinto</div>
-            <div style="background: #1a1a1a; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold;">Mía Bercián</div>
+        <h2 class="section-title">Integrantes del Equipo</h2>
+        <p class="section-intro">Proyecto desarrollado por los alumnos del grupo Nexo Digital:</p>
+        
+        <div class="team-grid">
+            <div class="member-card">Víctor Manuel</div>
+            <div class="member-card">Melanie Velázquez</div>
+            <div class="member-card">Nicté González</div>
+            <div class="member-card">Andrea Jacinto</div>
+            <div class="member-card">Mía Bercián</div>
         </div>
     </section>
 
-    <!-- Sección Contacto -->
-    <section id="contacto" class="section-container bg-light">
-        <div class="split-section">
-            <div class="about-us">
-                <h2>Misión & Visión</h2>
-                <p><strong>Misión:</strong> Aplicar conocimientos de electrónica y programación para construir un robot funcional que demuestre el potencial de la tecnología autónoma en la prevención de accidentes.</p>
-                <p><strong>Visión:</strong> Inspirar a nuestra comunidad escolar a involucrarse en proyectos de ciencia, ingeniería y robótica de manera práctica.</p>
+    <!-- Preguntas Frecuentes / Dudas -->
+    <section id="contacto" class="section-container">
+        <div class="split-box">
+            <div class="info-side">
+                <h3>Sobre nuestro grupo</h3>
+                <p>Somos un equipo escolar apasionado por entender cómo la programación sale de las pantallas para controlar hardware en la vida real.</p>
+                <p>Este prototipo fue construido con el propósito de demostrar principios básicos de robótica autónoma y sensores aplicados a sistemas de transporte.</p>
             </div>
-            
-            <div class="contact-form">
-                <h2>¿Dudas para el equipo?</h2>
-                <form action="#">
-                    <input type="text" placeholder="Tu Nombre" required>
-                    <input type="email" placeholder="Tu Correo Electronico" required>
-                    <textarea rows="4" placeholder="Escribe tus dudas sobre el circuito o la programación..." required></textarea>
-                    <button type="submit" class="btn">Enviar Consulta</button>
+            <div class="form-side">
+                <h3>¿Tienes alguna consulta?</h3>
+                <form action="#" onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje!');">
+                    <input type="text" placeholder="Tu nombre" required>
+                    <input type="email" placeholder="Correo electrónico" required>
+                    <textarea rows="3" placeholder="Déjanos una duda sobre los componentes o la lógica..." required></textarea>
+                    <button type="submit" class="btn">Enviar comentario</button>
                 </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Nexo Digital | Proyecto Feria de Ciencias - Auto Esquivador de Objetos</p>
+        <p>&copy; 2026 Nexo Digital — Proyecto Escolar de Robótica y Programación</p>
     </footer>
 
 </body>
