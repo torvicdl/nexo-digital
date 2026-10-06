@@ -9,13 +9,14 @@
 <body>
 
   <nav class="navbar">
-    <div class="nav-logo">Nexo Digital 🤖</div>
+    <div class="nav-logo">Nexo Digital ⚡</div>
     <div class="nav-links">
       <a href="#inicio">Inicio</a>
       <a href="#funcionamiento">Funcionamiento</a>
       <a href="#materiales">Materiales</a>
       <a href="#codigo">Código</a>
-      <a href="#equipo">Equipo & Dudas</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </nav>
 
@@ -28,95 +29,96 @@
         <p class="hero-subtitle">Feria de Ciencias 2026</p>
         <h1 class="hero-title">Carro Autónomo Esquivador de Obstáculos</h1>
         <p class="hero-description">
-          Un prototipo sobre ruedas que armamos y programamos para que detecte paredes y objetos en tiempo real, esquivándolos por sí solo sin que tengamos que controlarlo.
+          Un prototipo sobre ruedas que armamos y programamos para que detecte paredes y objetos en tiempo real, esquivándolos por sí solo sin control manual.
         </p>
         <div class="hero-tags">
           <span>C++ / Arduino IDE</span>
-          <span class="dot">•</span>
           <span>Sensor HC-SR04</span>
-          <span class="dot">•</span>
           <span>Puente H L298N</span>
-          <span class="dot">•</span>
           <span>Baterías 18650 (7.4V)</span>
         </div>
       </div>
     </section>
 
-    <!-- DIAPOSITIVA 2: FUNCIONAMIENTO -->
+    <!-- DIAPOSITIVA 2: FUNCIONAMIENTO (CAMBIO DE FORMATO A LÍNEA DE TIEMPO / FLUJO) -->
     <section id="funcionamiento" class="slide content-slide">
       <div class="slide-inner">
         <h2 class="slide-title">¿Cómo toma decisiones el robot?</h2>
-        <p class="slide-subtitle">Lo programamos para que siga una lógica súper sencilla de 4 pasos:</p>
-        <div class="cards-grid">
-          <div class="card-step">
-            <div class="card-num">01</div>
-            <h3>Disparo de ultrasonido</h3>
-            <p>El sensor manda una onda invisible hacia enfrente para medir qué tan libre está el camino.</p>
+        <p class="slide-subtitle">La lógica que programamos sigue un flujo continuo al encontrarse con obstáculos:</p>
+        
+        <div class="flow-container">
+          <div class="flow-step">
+            <span class="flow-badge">Fase 1</span>
+            <h3>Barrido Ultrasónico</h3>
+            <p>El sensor HC-SR04 dispara pulsos de sonido de alta frecuencia de manera constante hacia el frente.</p>
           </div>
-          <div class="card-step">
-            <div class="card-num">02</div>
-            <h3>Rebote de la señal</h3>
-            <p>Si hay un objeto o pared, la onda rebota y regresa de inmediato al sensor.</p>
+          <div class="flow-line"></div>
+          <div class="flow-step">
+            <span class="flow-badge">Fase 2</span>
+            <h3>Retorno y Medición</h3>
+            <p>El sonido rebota en cualquier objeto cercano y vuelve al sensor indicando el tiempo transcurrido.</p>
           </div>
-          <div class="card-step">
-            <div class="card-num">03</div>
-            <h3>Cálculo en la placa</h3>
-            <p>El Arduino mide exactamente cuántos milisegundos tardó en volver y calcula la distancia en centímetros.</p>
+          <div class="flow-line"></div>
+          <div class="flow-step">
+            <span class="flow-badge">Fase 3</span>
+            <h3>Proceso en Arduino</h3>
+            <p>La placa traduce el tiempo a centímetros exactos y evalúa si hay peligro de colisión cercana.</p>
           </div>
-          <div class="card-step">
-            <div class="card-num">04</div>
-            <h3>Esquive automático</h3>
-            <p>Si la distancia es menor a 20 cm, el motor gira hacia un lado para librar el obstáculo y seguir avanzando.</p>
+          <div class="flow-line"></div>
+          <div class="flow-step">
+            <span class="flow-badge">Fase 4</span>
+            <h3>Maniobra evasiva</h3>
+            <p>Si la distancia baja de 20 cm, el motor invierte su giro mediante el Puente H para buscar un camino libre.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- DIAPOSITIVA 3: MATERIALES (CON FOTOS) -->
+    <!-- DIAPOSITIVA 3: MATERIALES -->
     <section id="materiales" class="slide content-slide">
       <div class="slide-inner">
-        <h2 class="slide-title">Materiales que utilizamos</h2>
-        <p class="slide-subtitle">Cada pieza seleccionada para armar el circuito y la estructura:</p>
+        <h2 class="slide-title">Componentes y Hardware</h2>
+        <p class="slide-subtitle">Las piezas físicas y electrónicas que integran nuestro circuito:</p>
         <div class="materials-grid">
           <div class="mat-card">
             <img src="arduino.jpg" alt="Arduino Uno">
             <h3>Placa Arduino Uno</h3>
-            <p>El cerebro que guarda el código y controla todo.</p>
+            <p>Microcontrolador principal que procesa la lógica.</p>
           </div>
           <div class="mat-card">
             <img src="chasis.jpg" alt="Chasis">
             <h3>Chasis y 2 Motores</h3>
-            <p>La base con llantas y botón de encendido.</p>
+            <p>Estructura de acrílico con tracción trasera.</p>
           </div>
           <div class="mat-card">
             <img src="l298n.jpg" alt="L298N">
             <h3>Puente H L298N</h3>
-            <p>Controla la potencia y giro de los motores.</p>
+            <p>Módulo controlador de potencia para motores.</p>
           </div>
           <div class="mat-card">
             <img src="sensor.jpg" alt="Sensor HC-SR04">
             <h3>Sensor HC-SR04</h3>
-            <p>Mide la distancia como si fueran los ojos.</p>
+            <p>Dispositivo de medición por ultrasonido.</p>
           </div>
           <div class="mat-card">
             <img src="cables-mm.jpg" alt="Cables Macho-Macho">
             <h3>Cables Macho-Macho</h3>
-            <p>Para hacer puentes directos en la placa.</p>
+            <p>Puentes para conexiones en protoboard.</p>
           </div>
           <div class="mat-card">
             <img src="cables-mh.jpg" alt="Cables Macho-Hembra">
             <h3>Cables Macho-Hembra</h3>
-            <p>Conectan el sensor y el driver de potencia.</p>
+            <p>Enlaces directos hacia pines de sensores.</p>
           </div>
           <div class="mat-card">
             <img src="baterias.jpg" alt="Baterías">
             <h3>2 Baterías 18650</h3>
-            <p>Pilas recargables que dan energía estable.</p>
+            <p>Celdas de litio de alta densidad energética.</p>
           </div>
           <div class="mat-card">
             <img src="portapilas.jpg" alt="Porta pilas">
             <h3>Porta Pilas Doble</h3>
-            <p>Soporte que suma los 7.4V de alimentación.</p>
+            <p>Soporte con conexión en serie (7.4V).</p>
           </div>
         </div>
       </div>
@@ -125,8 +127,8 @@
     <!-- DIAPOSITIVA 4: CÓDIGO -->
     <section id="codigo" class="slide content-slide">
       <div class="slide-inner">
-        <h2 class="slide-title">Código en Arduino IDE</h2>
-        <p class="slide-subtitle">La rutina principal en C++ cargada en el robot:</p>
+        <h2 class="slide-title">Rutina de Control en C++</h2>
+        <p class="slide-subtitle">Extracto del código cargado en el Arduino IDE:</p>
         <pre class="code-block"><code>const int trigPin = 9;
 const int echoPin = 10;
 const int motorIzq = 5;
@@ -161,24 +163,34 @@ void loop() {
       </div>
     </section>
 
-    <!-- DIAPOSITIVA 5: EQUIPO Y CONTACTO -->
+    <!-- DIAPOSITIVA 5: EQUIPO (SEPARADO) -->
     <section id="equipo" class="slide content-slide">
       <div class="slide-inner">
-        <h2 class="slide-title">Equipo Nexo Digital</h2>
-        <p class="slide-subtitle">Integrantes: Víctor Manuel, Melanie Velázquez, Nicté González, Andrea Jacinto y Mía Bercián.</p>
+        <h2 class="slide-title">Equipo de Trabajo</h2>
+        <p class="slide-subtitle">Estudiantes creadores y responsables del desarrollo del proyecto:</p>
         
-        <div class="contact-box">
-          <div class="team-info">
-            <h3>¿Tienes alguna duda sobre el proyecto?</h3>
-            <p>Déjanos un mensaje directo y te respondemos sobre cómo armamos el circuito o cómo cargamos el código.</p>
-          </div>
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito!');">
-            <input type="text" placeholder="Tu nombre" required>
-            <input type="email" placeholder="Tu correo electrónico" required>
-            <textarea rows="3" placeholder="Escribe tu comentario o pregunta..." required></textarea>
-            <button type="submit" class="btn-enviar">Enviar consulta</button>
-          </form>
+        <div class="team-list">
+          <div class="team-member">Víctor Manuel</div>
+          <div class="team-member">Melanie Velázquez</div>
+          <div class="team-member">Nicté González</div>
+          <div class="team-member">Andrea Jacinto</div>
+          <div class="team-member">Mía Bercián</div>
         </div>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 6: CONTACTO Y COMENTARIOS (APARTE) -->
+    <section id="contacto" class="slide content-slide">
+      <div class="slide-inner" style="max-width: 650px;">
+        <h2 class="slide-title">Buzón de Consultas</h2>
+        <p class="slide-subtitle">¿Tienes alguna pregunta sobre el armado o la programación? Déjanos tu mensaje:</p>
+        
+        <form class="solo-form" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito!');">
+          <input type="text" placeholder="Tu nombre" required>
+          <input type="email" placeholder="Tu correo electrónico" required>
+          <textarea rows="4" placeholder="Escribe tu comentario o duda..." required></textarea>
+          <button type="submit" class="btn-enviar">Enviar comentario</button>
+        </form>
       </div>
     </section>
 
