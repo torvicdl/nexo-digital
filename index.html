@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexo Digital - Carro Autónomo Esquivador de Obstáculos</title>
+  <title>Carro Esquivador de Obstáculos - Nexo Digital</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <nav class="navbar">
-    <div class="nav-logo">Nexo Digital</div>
+    <div class="nav-brand">Proyecto Robótica <small>por Nexo Digital</small></div>
     <div class="nav-links">
       <a href="#inicio">Inicio</a>
-      <a href="#como-funciona">¿Cómo Funciona?</a>
-      <a href="#materiales">Materiales</a>
-      <a href="#codigo-fuente">Código Fuente</a>
-      <a href="#nosotros">Nosotros</a>
+      <a href="#funcionamiento">¿Cómo Funciona?</a>
+      <a href="#componentes">Materiales</a>
+      <a href="#codigo">Código</a>
+      <a href="#equipo">Nosotros</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </nav>
 
@@ -29,126 +30,131 @@
         <p class="hero-description">
           Diseñamos y ensamblamos un prototipo sobre ruedas capaz de detectar paredes y objetos en tiempo real sin chocar, usando lógica en Arduino y un sensor ultrasónico.
         </p>
-        <div class="hero-tags">
-          <span>C++ / Arduino IDE</span>
-          <span class="dot">•</span>
-          <span>Sensor HC-SR04</span>
-          <span class="dot">•</span>
-          <span>Puente H L298N</span>
-          <span class="dot">•</span>
-          <span>Baterías 18650 (7.4V)</span>
+        <div class="hero-pills">
+          <span class="pill">C++ / Arduino IDE</span>
+          <span class="pill">Sensor HC-SR04</span>
+          <span class="pill">Puente H L298N</span>
+          <span class="pill">Baterías 18650 (7.4V)</span>
         </div>
       </div>
     </section>
 
-    <section id="como-funciona" class="slide content-slide">
+    <section id="funcionamiento" class="slide content-slide">
       <div class="slide-inner">
         <h2 class="slide-title">¿Cómo toma decisiones el robot?</h2>
-        <p class="slide-subtitle">
-          El circuito combina la lectura del espacio con la respuesta inmediata de los motores en cuatro pasos simples:
-        </p>
+        <p class="slide-subtitle">El circuito combina la lectura del espacio con la respuesta inmediata de los motores en cuatro pasos simples:</p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3>Emisión del pulso</h3>
+            <p>El sensor ultrasónico dispara un pulso de sonido imperceptible a través de su pin Trigger.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3>Rebote y Eco</h3>
+            <p>La onda choca con el obstáculo más cercano y regresa al pin Echo del sensor.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3>Cálculo en la placa</h3>
+            <p>El Arduino procesa cuánto tiempo tardó la onda en ir y regresar para calcular la distancia en centímetros.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h3>Giro de emergencia</h3>
+            <p>Si el objeto está a menos de 20 cm, detiene una rueda y gira sobre su propio eje para cambiar de dirección.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="componentes" class="slide content-slide scrollable-slide">
+      <div class="slide-inner">
+        <h2 class="slide-title">Componentes y Piezas Utilizadas</h2>
         <div class="cards-grid">
+
           <div class="card">
-            <div class="card-num">01</div>
-            <h3>Emisión Ultrasónica</h3>
-            <p>El sensor HC-SR04 emite una ráfaga ultrasónica a 40 kHz a través del pin Trigger y espera el eco.</p>
+            <img src="arduino.jpg" alt="Arduino Uno">
+            <div class="card-body">
+              <h3>Placa Arduino Uno</h3>
+              <p>Tarjeta principal que guarda el programa y coordina las órdenes entre las lecturas y los motores.</p>
+            </div>
           </div>
+
           <div class="card">
-            <div class="card-num">02</div>
-            <h3>Cálculo de Distancia</h3>
-            <p>El microcontrolador Arduino mide el tiempo del pulso devuelto y calcula la distancia en centímetros.</p>
+            <img src="chasis.jpg" alt="Chasis y motores">
+            <div class="card-body">
+              <h3>Chasis y 2 Motores DC</h3>
+              <p>Base acrílica con interruptor de encendido y motores con llantas de goma de alta adherencia.</p>
+            </div>
           </div>
+
           <div class="card">
-            <div class="card-num">03</div>
-            <h3>Evaluación de Lógica</h3>
-            <p>Si la distancia es menor al umbral de seguridad (ej. 20 cm), el algoritmo interrumpe el avance recto.</p>
+            <img src="l298n.jpg" alt="Puente H L298N">
+            <div class="card-body">
+              <h3>Controlador Puente H (L298N)</h3>
+              <p>Módulo de potencia necesario para regular velocidad y cambiar el sentido de giro de los motores.</p>
+            </div>
           </div>
+
           <div class="card">
-            <div class="card-num">04</div>
-            <h3>Maniobra de Evasión</h3>
-            <p>Arduino envía señales al Puente H L298N para retroceder, girar y buscar una vía despejada.</p>
+            <img src="sensor.jpg" alt="Sensor Ultrasónico">
+            <div class="card-body">
+              <h3>Sensor Ultrasónico HC-SR04</h3>
+              <p>Funciona como los ojos del carrito, midiendo distancias desde 2 cm hasta 4 metros.</p>
+            </div>
           </div>
+
+          <div class="card">
+            <img src="cables-mm.jpg" alt="Cables Macho-Macho">
+            <div class="card-body">
+              <h3>Cables Macho-Macho</h3>
+              <p>Utilizados para llevar corriente y señales entre los pines de la placa y el protoboard.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="cables-mh.jpg" alt="Cables Macho-Hembra">
+            <div class="card-body">
+              <h3>Cables Macho-Hembra</h3>
+              <p>Indispensables para conectar las terminales del sensor ultrasónico y del controlador L298N.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="baterias.jpg" alt="Baterías Recargables">
+            <div class="card-body">
+              <h3>2 Baterías Li-Ion 18650</h3>
+              <p>Pilas recargables de litio que dan el flujo de energía constante para alimentar los motores.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="portapilas.jpg" alt="Porta pilas">
+            <div class="card-body">
+              <h3>Porta Pilas Doble</h3>
+              <p>Soporte donde montamos las dos baterías en serie para sumar un total de 7.4V de potencia.</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="materiales" class="slide content-slide">
+    <section id="codigo" class="slide content-slide">
       <div class="slide-inner">
-        <h2 class="slide-title">Materiales y Componentes</h2>
-        <div class="materials-list">
-          <div class="material-item">
-            <span class="material-name">Arduino UNO / Nano</span>
-            <span class="material-desc">Cerebro del robot encargado de procesar sensores y controlar actuadores.</span>
+        <h2 class="slide-title">Lógica del Algoritmo (Arduino C++)</h2>
+        <div class="code-box">
+          <div class="code-header">
+            <span>carro_esquivador.ino</span>
           </div>
-          <div class="material-item">
-            <span class="material-name">Sensor Ultrasónico HC-SR04</span>
-            <span class="material-desc">Mide la proximidad de objetos por medio de ondas de ultrasonido.</span>
-          </div>
-          <div class="material-item">
-            <span class="material-name">Driver Puente H L298N</span>
-            <span class="material-desc">Módulo de potencia para controlar velocidad y sentido de giro de los motores DC.</span>
-          </div>
-          <div class="material-item">
-            <span class="material-name">Chasis de Metacrilato con 2/4 Motores DC</span>
-            <span class="material-desc">Estructura física, ruedas de tracción y Rueda Loca omnidireccional.</span>
-          </div>
-          <div class="material-item">
-            <span class="material-name">Pack Baterías 18650 Li-Ion (7.4V)</span>
-            <span class="material-desc">Fuente de alimentación dedicada de alta descarga.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="codigo-fuente" class="slide content-slide">
-      <div class="slide-inner">
-        <h2 class="slide-title">Código Fuente C++ (Arduino)</h2>
-        <pre class="code-block"><code>const int trigPin = 9;
+          <pre><code>const int trigPin = 9;
 const int echoPin = 10;
 
-const int IN1 = 5;
-const int IN2 = 6;
+const int motorIzquierdo = 5;
+const int motorDerecho = 6;
 
 void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-}
-
-void loop() {
-  long duracion, distancia;
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-
-  duracion = pulseIn(echoPin, HIGH);
-  distancia = duracion * 0.034 / 2;
-
-  if (distancia &lt; 20) {
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-  } else {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-  }
-}</code></pre>
-      </div>
-    </section>
-
-    <section id="nosotros" class="slide content-slide">
-      <div class="slide-inner">
-        <h2 class="slide-title">Equipo Nexo Digital</h2>
-        <p class="slide-subtitle">Proyecto presentado para la Feria de Ciencias 2026</p>
-        <div class="team-box">
-          <p>Desarrollado y presentado por el equipo de robótica e informática.</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-</body>
-</html>
+  pinMode(motorIzquierdo, OUTPUT);
